@@ -1,0 +1,9 @@
+project: savantenvs/client-sdk-rust
+target: protocol_decode
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/protocol_decode/testsuite
+cmds:
+  - cmd: /mayhem/protocol_decode
+    libfuzzer: true
+    timeout: 10

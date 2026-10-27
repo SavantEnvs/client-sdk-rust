@@ -1,0 +1,1 @@
+{"iss":"myapikey","sub":"u","name":"n","exp":4102444800,"video":{"roomJoin":true,"room":"r","canPublish":true,"canSubscribe":true},"metadata":"m","attributes":{"a":"b"},"roomConfig":{"name":"r"}}

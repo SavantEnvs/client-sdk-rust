@@ -1,0 +1,9 @@
+project: savantenvs/client-sdk-rust
+target: datatrack_packet
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/datatrack_packet/testsuite
+cmds:
+  - cmd: /mayhem/datatrack_packet
+    libfuzzer: true
+    timeout: 10
