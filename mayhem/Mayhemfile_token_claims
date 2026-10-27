@@ -1,0 +1,9 @@
+project: savantenvs/client-sdk-rust
+target: token_claims
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/token_claims/testsuite
+cmds:
+  - cmd: /mayhem/token_claims
+    libfuzzer: true
+    timeout: 10

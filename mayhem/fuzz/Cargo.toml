@@ -1,0 +1,84 @@
+[package]
+name = "mayhem-livekit-fuzz"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Detached from the upstream workspace so the harness crate builds on its own lockfile.
+[workspace]
+
+[package.metadata]
+cargo-fuzz = true
+
+[lib]
+name = "lk_fuzz"
+path = "src/lib.rs"
+
+[dependencies]
+libfuzzer-sys = "0.4"
+bytes = "1"
+prost = "0.14"
+serde = "1"
+serde_json = "1"
+tokio = { version = "1", default-features = false, features = ["rt"] }
+base64 = "0.21"
+hmac = "0.12"
+sha2 = "0.10"
+livekit-protocol = { path = "../../livekit-protocol" }
+livekit-common = { path = "../../livekit-common" }
+livekit-token = { path = "../../livekit-token" }
+livekit-token-source = { path = "../../livekit-token-source", default-features = false }
+livekit-data-stream = { path = "../../livekit-data-stream" }
+livekit-datatrack = { path = "../../livekit-datatrack", features = ["__fuzz"] }
+
+[profile.release]
+debug = 1
+
+[[bin]]
+name = "protocol_decode"
+path = "fuzz_targets/protocol_decode.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "protocol_json"
+path = "fuzz_targets/protocol_json.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "token_claims"
+path = "fuzz_targets/token_claims.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "token_source_response"
+path = "fuzz_targets/token_source_response.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "data_stream"
+path = "fuzz_targets/data_stream.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "datatrack_packet"
+path = "fuzz_targets/datatrack_packet.rs"
+test = false
+doc = false
+bench = false
+
+[[bin]]
+name = "kat"
+path = "kat/main.rs"
+test = false
+doc = false
+bench = false
